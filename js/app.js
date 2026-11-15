@@ -136,13 +136,28 @@ class SigaApp {
   }
 
   setupHashRouting() {
+    const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const validPaths = ['calendario', 'ambientes', 'nova-reserva', 'consultar', 'emails', 'decisao'];
     if (!window.location.hash) {
-      window.location.hash = 'calendario';
+      if (rawPath && validPaths.includes(rawPath)) {
+        window.location.hash = `${rawPath}${window.location.search || ''}`;
+      } else {
+        window.location.hash = 'calendario';
+      }
     }
   }
 
   handleRoute() {
-    const rawHash = window.location.hash.slice(1) || 'calendario';
+    let rawHash = window.location.hash.slice(1);
+    if (!rawHash) {
+      const rawPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+      const validPaths = ['calendario', 'ambientes', 'nova-reserva', 'consultar', 'emails', 'decisao'];
+      if (rawPath && validPaths.includes(rawPath)) {
+        rawHash = rawPath + (window.location.search || '');
+      } else {
+        rawHash = 'calendario';
+      }
+    }
     const [path, queryString] = rawHash.split('?');
     const params = new URLSearchParams(queryString || '');
 

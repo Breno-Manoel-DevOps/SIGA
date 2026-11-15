@@ -26,7 +26,14 @@ python3 -m http.server 8000
 Em seguida, abra o navegador em:
 👉 **`http://localhost:8000`**
 
-### Opção 2: Abertura Direta
+### Opção 2: Publicação na Vercel (100% Configurado e Pronto)
+O projeto já conta com o arquivo `vercel.json` e `package.json` devidamente ajustados para deploy estático na Vercel:
+1. Acesse **[vercel.com](https://vercel.com)** e faça login.
+2. Clique em **"Add New..."** ➔ **"Project"**.
+3. Importe o repositório GitHub do projeto (`SIGA`).
+4. Clique diretamente em **"Deploy"** (não é necessário alterar nenhuma configuração de build ou variáveis de ambiente).
+
+### Opção 3: Abertura Direta
 Você pode simplesmente dar um **duplo clique** no arquivo `index.html` ou abri-lo diretamente em qualquer navegador web moderno (Google Chrome, Firefox, Edge, Safari). Os arquivos de biblioteca (`tailwind.js` e `lucide.min.js`) estão inclusos localmente na pasta `vendor/` para funcionamento 100% offline!
 
 ---

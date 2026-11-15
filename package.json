@@ -1,0 +1,18 @@
+{
+  "name": "siga-instituto-consenso",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SIGA - Sistema Integrado de Gestão de Ambientes | Instituto Consenso (Convergência em Saúde)",
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "siga",
+    "instituto-consenso",
+    "gestao-de-ambientes",
+    "ads",
+    "projeto-integrador-1"
+  ],
+  "author": "Breno Manoel",
+  "license": "MIT"
+}
