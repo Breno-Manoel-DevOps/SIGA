@@ -37,9 +37,9 @@ class SigaApp {
     const resetBtn = document.getElementById('btn-reset-demo-data');
     if (resetBtn) {
       resetBtn.onclick = () => {
-        if (confirm('Deseja restaurar as reservas para os dados de demonstração iniciais?')) {
+        if (confirm('Deseja limpar todas as reservas para iniciar uma nova demonstração?')) {
           store.resetData();
-          this.showToast('info', 'Dados iniciais restaurados com sucesso.');
+          this.showToast('info', 'Todas as reservas foram limpas. O sistema está pronto para a demonstração!');
           this.handleRoute();
         }
       };

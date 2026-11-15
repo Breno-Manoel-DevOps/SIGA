@@ -78,6 +78,12 @@ class SigaEmailSimulator {
               </div>
 
               <div class="space-y-2 max-h-[520px] overflow-y-auto pr-1">
+                ${allReservations.length === 0 ? `
+                  <div class="p-6 text-center text-xs text-slate-400">
+                    <i data-lucide="inbox" class="w-8 h-8 text-slate-300 mx-auto mb-2"></i>
+                    Nenhuma notificação recebida ainda.
+                  </div>
+                ` : ''}
                 ${allReservations.slice().reverse().map(res => {
                   const isSelected = selectedRes && selectedRes.protocol === res.protocol;
                   const isPending = res.status === 'Pendente';
@@ -107,8 +113,10 @@ class SigaEmailSimulator {
           <!-- Coluna Direita: Exibição do E-mail Formatado (RN13 ou RN14) -->
           <div class="lg:col-span-8">
             ${selectedRes ? this.renderEmailBody(selectedRes, room, currentAdmin) : `
-              <div class="bg-white p-12 rounded-3xl border border-slate-200 text-center text-slate-400 text-xs">
-                Selecione um e-mail na lista lateral para visualizar.
+              <div class="bg-white p-12 rounded-3xl border border-slate-200 text-center text-slate-400 text-xs flex flex-col items-center justify-center">
+                <i data-lucide="mail-open" class="w-10 h-10 text-slate-300 mb-3"></i>
+                <h4 class="text-sm font-bold text-slate-700 mb-1">Caixa de Entrada Vazia</h4>
+                <p class="max-w-xs mx-auto text-slate-500">Nenhuma solicitação de reserva no momento. Ao registrar uma solicitação na aba "Nova Reserva", o e-mail de notificação aos 3 administradores chegará aqui automaticamente.</p>
               </div>
             `}
           </div>

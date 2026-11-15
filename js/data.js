@@ -172,154 +172,22 @@ const SIGA_MESSAGES = {
   MSG23: 'Decisão registrada, mas o e-mail aos administradores não pôde ser enviado. Uma nova tentativa será feita.'
 };
 
-// Dados semente para demonstração inicial (Data de referência: 01/11/2026)
-const INITIAL_RESERVATIONS = [
-  {
-    protocol: 'SIGA-2026-001',
-    roomId: 'auditorio',
-    eventName: 'Simpósio de Políticas Públicas em Saúde',
-    date: '2026-11-01',
-    startTime: '14:00',
-    endTime: '17:00',
-    participants: 60,
-    resources: {
-      videoconferencia: true,
-      gravacao: true,
-      transmissao: true
-    },
-    requesterName: 'Dr. Arnaldo Souza',
-    requesterEmail: 'arnaldo.souza@consenso.org.br',
-    notes: 'Abertura solene com convidados do Ministério da Saúde.',
-    status: 'Aprovada', // RN16: Vermelha
-    createdAt: '2026-10-30T10:15:00',
-    decidedBy: 'Dra. Camila Mendes',
-    decidedAt: '2026-10-30T11:40:00',
-    rejectionReason: null,
-    adminTokens: {
-      'admin-1': 'tok_siga_001_adm1_used',
-      'admin-2': 'tok_siga_001_adm2_invalid',
-      'admin-3': 'tok_siga_001_adm3_invalid'
-    }
-  },
-  {
-    protocol: 'SIGA-2026-002',
-    roomId: 'sala-1',
-    eventName: 'Reunião de Diretoria Clínica',
-    date: '2026-11-01',
-    startTime: '10:00',
-    endTime: '12:00',
-    participants: 14,
-    resources: {
-      videoconferencia: true,
-      gravacao: false,
-      transmissao: false
-    },
-    requesterName: 'Cíntia Ramos (Secretaria)',
-    requesterEmail: 'cintia.secretaria@consenso.org.br',
-    notes: 'Pauta: Planejamento orçamentário do 1º trimestre.',
-    status: 'Pendente', // RN16: Amarela
-    createdAt: '2026-11-01T08:30:00',
-    decidedBy: null,
-    decidedAt: null,
-    rejectionReason: null,
-    adminTokens: {
-      'admin-1': 'tok_siga_002_adm1_valid',
-      'admin-2': 'tok_siga_002_adm2_valid',
-      'admin-3': 'tok_siga_002_adm3_valid'
-    }
-  },
-  {
-    protocol: 'SIGA-2026-003',
-    roomId: 'sala-2',
-    eventName: 'Comitê de Ética e Pesquisa',
-    date: '2026-11-01',
-    startTime: '14:30',
-    endTime: '16:00',
-    participants: 8,
-    resources: {
-      videoconferencia: true,
-      gravacao: false,
-      transmissao: false
-    },
-    requesterName: 'Prof. Dra. Helena Matos',
-    requesterEmail: 'helena.matos@consenso.org.br',
-    notes: 'Avaliação de 4 protocolos de ensaios clínicos.',
-    status: 'Aprovada', // RN16: Vermelha
-    createdAt: '2026-10-31T14:00:00',
-    decidedBy: 'Dr. Roberto Silva',
-    decidedAt: '2026-10-31T15:20:00',
-    rejectionReason: null,
-    adminTokens: {
-      'admin-1': 'tok_siga_003_adm1_invalid',
-      'admin-2': 'tok_siga_003_adm2_used',
-      'admin-3': 'tok_siga_003_adm3_invalid'
-    }
-  },
-  {
-    protocol: 'SIGA-2026-004',
-    roomId: 'sala-4',
-    eventName: 'Atendimento Individualizado com Pesquisador Visitante',
-    date: '2026-11-01',
-    startTime: '16:00',
-    endTime: '17:30',
-    participants: 3,
-    resources: {
-      videoconferencia: false,
-      gravacao: false,
-      transmissao: false
-    },
-    requesterName: 'Carlos Eduardo Santos',
-    requesterEmail: 'carlos.santos@consenso.org.br',
-    notes: 'Discussão técnica sobre bioestatística.',
-    status: 'Pendente', // RN16: Amarela
-    createdAt: '2026-11-01T08:50:00',
-    decidedBy: null,
-    decidedAt: null,
-    rejectionReason: null,
-    adminTokens: {
-      'admin-1': 'tok_siga_004_adm1_valid',
-      'admin-2': 'tok_siga_004_adm2_valid',
-      'admin-3': 'tok_siga_004_adm3_valid'
-    }
-  },
-  {
-    protocol: 'SIGA-2026-005',
-    roomId: 'sala-podcast',
-    eventName: 'Gravação Podcast Consenso Saúde - Episódio 24',
-    date: '2026-11-02',
-    startTime: '10:00',
-    endTime: '12:00',
-    participants: 4,
-    resources: {
-      videoconferencia: false,
-      gravacao: false,
-      transmissao: false
-    },
-    requesterName: 'Mariana Rios (Comunicação)',
-    requesterEmail: 'mariana.rios@consenso.org.br',
-    notes: 'Entrevista especial com a diretora da ANVISA.',
-    status: 'Pendente',
-    createdAt: '2026-10-31T17:00:00',
-    decidedBy: null,
-    decidedAt: null,
-    rejectionReason: null,
-    adminTokens: {
-      'admin-1': 'tok_siga_005_adm1_valid',
-      'admin-2': 'tok_siga_005_adm2_valid',
-      'admin-3': 'tok_siga_005_adm3_valid'
-    }
-  }
-];
+// Dados semente para demonstração inicial (Inicia limpo para demonstrações)
+const INITIAL_RESERVATIONS = [];
 
 // Gerenciador de Estado do SIGA
 class SigaStore {
   constructor() {
-    this.STORAGE_KEY_RESERVATIONS = 'siga_reservations_v1';
-    this.STORAGE_KEY_TIME = 'siga_simulated_time_v1';
+    this.STORAGE_KEY_RESERVATIONS = 'siga_reservations_v2';
+    this.STORAGE_KEY_TIME = 'siga_simulated_time_v2';
     this.init();
   }
 
   init() {
+    // Remove armazenamento antigo com dados sementes se houver
+    localStorage.removeItem('siga_reservations_v1');
+    localStorage.removeItem('siga_simulated_time_v1');
+
     if (!localStorage.getItem(this.STORAGE_KEY_RESERVATIONS)) {
       this.resetData();
     }
@@ -330,7 +198,7 @@ class SigaStore {
   }
 
   resetData() {
-    localStorage.setItem(this.STORAGE_KEY_RESERVATIONS, JSON.stringify(INITIAL_RESERVATIONS));
+    localStorage.setItem(this.STORAGE_KEY_RESERVATIONS, JSON.stringify([]));
     this.setSimulatedTime('2026-11-01T09:30:00');
   }
 

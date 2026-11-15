@@ -60,6 +60,7 @@ class SigaSearch {
         </div>
 
         <!-- Atalhos rápidos com as últimas reservas -->
+        ${allReservations.length > 0 ? `
         <div class="mb-8 flex items-center gap-2 overflow-x-auto pb-2 text-xs">
           <span class="text-slate-400 font-semibold whitespace-nowrap">Recentes:</span>
           ${allReservations.slice(-5).reverse().map(r => `
@@ -72,6 +73,7 @@ class SigaSearch {
             </button>
           `).join('')}
         </div>
+        ` : ''}
 
         <!-- Resultado da Consulta -->
         ${this.searchedProtocol ? (result ? this.renderResultCard(result) : this.renderNotFound()) : ''}
