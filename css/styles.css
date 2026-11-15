@@ -1,0 +1,148 @@
+/* SIGA - Sistema Integrado de Gestão de Ambientes */
+/* Instituto Consenso - Convergência em Saúde */
+
+:root {
+  --color-brand-navy: #151E3B;
+  --color-brand-navy-dark: #0E1428;
+  --color-brand-navy-light: #1E294B;
+  --color-brand-gold: #F6A723;
+  --color-brand-gold-hover: #E29415;
+  --color-status-free: #10B981;
+  --color-status-pending: #F59E0B;
+  --color-status-approved: #EF4444;
+  --color-status-disabled: #94A3B8;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1E293B;
+  background-color: #F8FAFC;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Custom styling for calendar grid */
+.calendar-time-col {
+  width: 72px;
+  min-width: 72px;
+}
+
+.calendar-room-col {
+  min-width: 170px;
+}
+
+.calendar-slot-cell {
+  transition: all 0.15s ease-in-out;
+}
+.calendar-slot-cell:hover {
+  filter: brightness(0.95);
+}
+
+/* Status colors specified by RN16 */
+.status-livre {
+  background-color: #ECFDF5;
+  color: #065F46;
+  border-color: #A7F3D0;
+}
+.status-pendente {
+  background-color: #FFFBEB;
+  color: #92400E;
+  border-color: #FDE68A;
+}
+.status-aprovada {
+  background-color: #FEF2F2;
+  color: #991B1B;
+  border-color: #FECACA;
+}
+.status-indisponivel {
+  background-color: #F1F5F9;
+  color: #64748B;
+  border-color: #E2E8F0;
+}
+
+/* Badges */
+.badge-livre {
+  background-color: #10B981;
+  color: #ffffff;
+}
+.badge-pendente {
+  background-color: #F59E0B;
+  color: #ffffff;
+}
+.badge-aprovada {
+  background-color: #EF4444;
+  color: #ffffff;
+}
+.badge-indisponivel {
+  background-color: #94A3B8;
+  color: #ffffff;
+}
+
+/* Pulse animation for pending status */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient background for hero headers */
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #151E3B 0%, #1e293b 60%, #172554 100%);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #F6A723 0%, #E29415 100%);
+}
+
+/* Toast container */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Card hover animation */
+.card-hover-effect {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+}
